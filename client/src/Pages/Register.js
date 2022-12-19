@@ -16,7 +16,7 @@ export default function Register() {
         email: emailRef.current.value,
         password: passwordRef.current.value,
       };
-      const res = await fetch("http://127.0.0.1:3001/register", {
+      const res = await fetch("/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
