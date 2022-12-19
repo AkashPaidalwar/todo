@@ -95,7 +95,7 @@ const PORT=process.env.port || 3001
 
 
 //////////////////////////
-var filePath = "/client/build/index.html"
+var filePath = "./client/build/index.html"
 var resolvedPath = path.resolve(filePath);
 
 app.use(express.static("/client/build"));
