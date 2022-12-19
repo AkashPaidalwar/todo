@@ -4,11 +4,14 @@ const cors = require("cors");
 const Todo = require("./model/Todo");
 const User = require("./model/user");
 const dotenv=require("dotenv")
+var path = require('path');
 dotenv.config()
 const app = express();
 app.use(express.json());
 app.use(cors());
 DB = process.env.DB
+
+
 
 mongoose
   .connect(
@@ -92,9 +95,12 @@ const PORT=process.env.port || 3001
 
 
 //////////////////////////
+var filePath = "/client/build/index.html"
+var resolvedPath = path.resolve(filePath);
+
 app.use(express.static("/client/build"));
 app.get("*", function (_, res) {
-  res.sendFile("/client/build/index.html",
+  res.sendFile(resolvedPath,
     function (err) {
       res.status(500).send(err);
     }
