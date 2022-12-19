@@ -90,18 +90,23 @@ app.post("/login", async (req, res) => {
 });
 const PORT=process.env.port || 3001
 
-if (process.env.NODE_ENV == "production"){
-  app.use(express.static("./client/build"))
-}
 
-app.get("*", function(_,res){
+//////////////////////////
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.get("*", function (_, res) {
   res.sendFile(
-    path.join(__dirname,"/client/build/index.html"),
-    function(err){
-      res.status(500).send(err)
+    path.join(__dirname, "./client/build/index.html"),
+    function (err) {
+      res.status(500).send(err);
     }
-  )
-})
+  );
+});
+
+////////////////////////
+
+
+
+
 app.listen(PORT, () => {
   console.log("server started on port 3000");
 });
